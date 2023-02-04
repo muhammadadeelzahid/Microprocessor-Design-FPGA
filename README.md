@@ -1,7 +1,7 @@
 This repository contains Verilog Code for a soft core microprocessor “NuCore” and its testbench named “NuCore_TB”.
 
 Note: Instruction set is provided in the "Instruction_set.pdf" file.
-1.  The NuCore have the following major blocks.
+1.  The NuCore has the following major blocks.
 
     1.  A 64 deep Instruction Queue, addressed by a Program Counter. The
         Program Counter resets on the RESET signal. The Program Counter
