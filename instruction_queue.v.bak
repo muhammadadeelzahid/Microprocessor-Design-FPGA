@@ -1,0 +1,13 @@
+module instruction_queue();
+
+reg [38:0] memory [63:0];
+input [5:0] address;
+output reg [5:0]instruction;
+initial
+begin
+$readmemb ("memory.dat",memory);
+
+end
+assign instruction = memory[address];
+
+endmodule

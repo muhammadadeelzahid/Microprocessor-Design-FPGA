@@ -1,0 +1,59 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/usama/Desktop/dsd assignment 2/simulation/qsim
+vNuCore
+!s110 1653168440
+!i10b 1
+!s100 8KQXK4lo^X3j>gONoQ5U>2
+Z0 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I2Ae^[>cXG4SjRV9XGUeAC1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dG:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/simulation/qsim
+w1653168438
+8NuCore.vo
+FNuCore.vo
+!i122 14
+L0 32 17681
+Z3 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z4 !s108 1653168440.000000
+!s107 NuCore.vo|
+!s90 -work|work|NuCore.vo|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+n@nu@core
+vNuCore_vlg_vec_tst
+!s110 1653168441
+!i10b 1
+!s100 Qezd^EDGQIYLm^4EieG`g3
+R0
+I?bgE5mz@c7Iai_SfoB^PL3
+R1
+R2
+w1653168437
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+!i122 15
+L0 30 48
+R3
+r1
+!s85 0
+31
+R4
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R5
+R6
+n@nu@core_vlg_vec_tst

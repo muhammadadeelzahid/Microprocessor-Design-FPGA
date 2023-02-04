@@ -1,0 +1,1581 @@
+Analysis & Synthesis report for NuCore
+Sun May 22 14:25:53 2022
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Program_Counter:P0
+ 14. Parameter Settings for User Entity Instance: seg_7:s0
+ 15. Parameter Settings for User Entity Instance: seg_7:s1
+ 16. Parameter Settings for User Entity Instance: seg_7:s2
+ 17. Parameter Settings for User Entity Instance: seg_7:s3
+ 18. Parameter Settings for User Entity Instance: seg_7:s4
+ 19. Parameter Settings for User Entity Instance: seg_7:s5
+ 20. Port Connectivity Checks: "ALU:U0"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sun May 22 14:25:53 2022       ;
+; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Revision Name                   ; NuCore                                      ;
+; Top-level Entity Name           ; NuCore                                      ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 302                                         ;
+; Total pins                      ; 141                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; NuCore             ; NuCore             ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                    ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------+---------+
+; Instruction_Queue.v              ; yes             ; User Verilog HDL File        ; G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Instruction_Queue.v  ;         ;
+; ALU.v                            ; yes             ; User Verilog HDL File        ; G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/ALU.v                ;         ;
+; Program_Counter.v                ; yes             ; User Verilog HDL File        ; G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Program_Counter.v    ;         ;
+; NuCore.v                         ; yes             ; User Verilog HDL File        ; G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v             ;         ;
+; Reg.v                            ; yes             ; User Verilog HDL File        ; G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Reg.v                ;         ;
+; seg_7.v                          ; yes             ; User Verilog HDL File        ; G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/seg_7.v              ;         ;
+; decoder.v                        ; yes             ; User Verilog HDL File        ; G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/decoder.v            ;         ;
+; memory.dat                       ; yes             ; Auto-Found Unspecified File  ; G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/memory.dat           ;         ;
+; instruction_update.v             ; yes             ; Auto-Found Verilog HDL File  ; G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimate of Logic utilization (ALMs needed) ; 270          ;
+;                                             ;              ;
+; Combinational ALUT usage for logic          ; 379          ;
+;     -- 7 input functions                    ; 0            ;
+;     -- 6 input functions                    ; 108          ;
+;     -- 5 input functions                    ; 62           ;
+;     -- 4 input functions                    ; 104          ;
+;     -- <=3 input functions                  ; 105          ;
+;                                             ;              ;
+; Dedicated logic registers                   ; 302          ;
+;                                             ;              ;
+; I/O pins                                    ; 141          ;
+;                                             ;              ;
+; Total DSP Blocks                            ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; KEY[0]~input ;
+; Maximum fan-out                             ; 302          ;
+; Total fan-out                               ; 2953         ;
+; Average fan-out                             ; 3.07         ;
++---------------------------------------------+--------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                     ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name           ; Entity Name        ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------+--------------------+--------------+
+; |NuCore                    ; 379 (0)             ; 302 (0)                   ; 0                 ; 0          ; 141  ; 0            ; |NuCore                       ; NuCore             ; work         ;
+;    |ALU:U0|                ; 173 (173)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |NuCore|ALU:U0                ; ALU                ; work         ;
+;    |Instruction_Queue:I0|  ; 15 (15)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |NuCore|Instruction_Queue:I0  ; Instruction_Queue  ; work         ;
+;    |Instruction_update:I1| ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |NuCore|Instruction_update:I1 ; Instruction_update ; work         ;
+;    |Program_Counter:P0|    ; 6 (6)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |NuCore|Program_Counter:P0    ; Program_Counter    ; work         ;
+;    |Reg:A0|                ; 73 (73)             ; 136 (136)                 ; 0                 ; 0          ; 0    ; 0            ; |NuCore|Reg:A0                ; Reg                ; work         ;
+;    |Reg:B0|                ; 73 (73)             ; 136 (136)                 ; 0                 ; 0          ; 0    ; 0            ; |NuCore|Reg:B0                ; Reg                ; work         ;
+;    |decoder:D0|            ; 4 (4)               ; 24 (24)                   ; 0                 ; 0          ; 0    ; 0            ; |NuCore|decoder:D0            ; decoder            ; work         ;
+;    |seg_7:s0|              ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |NuCore|seg_7:s0              ; seg_7              ; work         ;
+;    |seg_7:s2|              ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |NuCore|seg_7:s2              ; seg_7              ; work         ;
+;    |seg_7:s4|              ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |NuCore|seg_7:s4              ; seg_7              ; work         ;
+;    |seg_7:s5|              ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |NuCore|seg_7:s5              ; seg_7              ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------+--------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                               ;
++----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------+------------------------+
+; Instruction_update:I1|read_A                       ; KEY[1]              ; yes                    ;
+; Instruction_update:I1|write_A                      ; KEY[1]              ; yes                    ;
+; Instruction_update:I1|write_B                      ; KEY[1]              ; yes                    ;
+; Instruction_update:I1|read_B                       ; KEY[1]              ; yes                    ;
+; Number of user-specified and inferred latches = 4  ;                     ;                        ;
++----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; decoder:D0|value_A[4..16,18..27]        ; Merged with decoder:D0|value_A[17]     ;
+; decoder:D0|value_B[5..27]               ; Merged with decoder:D0|value_B[4]      ;
+; decoder:D0|value_A[17]                  ; Stuck at GND due to stuck port data_in ;
+; decoder:D0|value_B[4]                   ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][7]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][7]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][6]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][6]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][5]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][5]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][4]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][4]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[15][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[14][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[13][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[12][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[11][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[10][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[9][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[8][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[7][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[6][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[5][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[4][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[3][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[2][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[1][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|Reg[0][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][27]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][27]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][26]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][26]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][25]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][25]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][24]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][24]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][23]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][23]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][22]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][22]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][21]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][21]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][20]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][20]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][19]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][19]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][18]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][18]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][17]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][17]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][16]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][16]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][15]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][15]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][14]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][14]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][13]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][13]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][12]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][12]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][11]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][11]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][10]                      ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][10]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][9]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][9]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[15][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[14][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[13][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[12][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[11][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[10][8]                       ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[9][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[8][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[7][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[6][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[5][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[4][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[3][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[2][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[1][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|Reg[0][8]                        ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|data_out[4..7]                   ; Stuck at GND due to stuck port data_in ;
+; Reg:B0|data_out[4..27]                  ; Stuck at GND due to stuck port data_in ;
+; Reg:A0|data_out[8..27]                  ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 864 ;                                        ;
++-----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                    ;
++------------------------+---------------------------+-------------------------------------------------------------------------------------------+
+; Register name          ; Reason for Removal        ; Registers Removed due to This Register                                                    ;
++------------------------+---------------------------+-------------------------------------------------------------------------------------------+
+; decoder:D0|value_A[17] ; Stuck at GND              ; Reg:A0|Reg[15][7], Reg:A0|Reg[14][7], Reg:A0|Reg[13][7], Reg:A0|Reg[12][7],               ;
+;                        ; due to stuck port data_in ; Reg:A0|Reg[11][7], Reg:A0|Reg[10][7], Reg:A0|Reg[9][7], Reg:A0|Reg[8][7],                 ;
+;                        ;                           ; Reg:A0|Reg[7][7], Reg:A0|Reg[6][7], Reg:A0|Reg[5][7], Reg:A0|Reg[4][7], Reg:A0|Reg[3][7], ;
+;                        ;                           ; Reg:A0|Reg[2][7], Reg:A0|Reg[1][7], Reg:A0|Reg[0][7], Reg:A0|Reg[15][6],                  ;
+;                        ;                           ; Reg:A0|Reg[14][6], Reg:A0|Reg[13][6], Reg:A0|Reg[12][6], Reg:A0|Reg[11][6],               ;
+;                        ;                           ; Reg:A0|Reg[10][6], Reg:A0|Reg[9][6], Reg:A0|Reg[8][6], Reg:A0|Reg[7][6],                  ;
+;                        ;                           ; Reg:A0|Reg[6][6], Reg:A0|Reg[5][6], Reg:A0|Reg[4][6], Reg:A0|Reg[3][6], Reg:A0|Reg[2][6], ;
+;                        ;                           ; Reg:A0|Reg[1][6], Reg:A0|Reg[0][6], Reg:A0|Reg[15][5], Reg:A0|Reg[14][5],                 ;
+;                        ;                           ; Reg:A0|Reg[13][5], Reg:A0|Reg[12][5], Reg:A0|Reg[11][5], Reg:A0|Reg[10][5],               ;
+;                        ;                           ; Reg:A0|Reg[9][5], Reg:A0|Reg[8][5], Reg:A0|Reg[7][5], Reg:A0|Reg[6][5], Reg:A0|Reg[5][5], ;
+;                        ;                           ; Reg:A0|Reg[4][5], Reg:A0|Reg[3][5], Reg:A0|Reg[2][5], Reg:A0|Reg[1][5], Reg:A0|Reg[0][5], ;
+;                        ;                           ; Reg:A0|Reg[15][4], Reg:A0|Reg[14][4], Reg:A0|Reg[13][4], Reg:A0|Reg[12][4],               ;
+;                        ;                           ; Reg:A0|Reg[11][4], Reg:A0|Reg[10][4], Reg:A0|Reg[9][4], Reg:A0|Reg[8][4],                 ;
+;                        ;                           ; Reg:A0|Reg[7][4], Reg:A0|Reg[6][4], Reg:A0|Reg[5][4], Reg:A0|Reg[4][4], Reg:A0|Reg[3][4], ;
+;                        ;                           ; Reg:A0|Reg[2][4], Reg:A0|Reg[1][4], Reg:A0|Reg[0][4], Reg:A0|Reg[15][27],                 ;
+;                        ;                           ; Reg:A0|Reg[14][27], Reg:A0|Reg[13][27], Reg:A0|Reg[12][27], Reg:A0|Reg[11][27],           ;
+;                        ;                           ; Reg:A0|Reg[10][27], Reg:A0|Reg[9][27], Reg:A0|Reg[8][27], Reg:A0|Reg[7][27],              ;
+;                        ;                           ; Reg:A0|Reg[6][27], Reg:A0|Reg[5][27], Reg:A0|Reg[4][27], Reg:A0|Reg[3][27],               ;
+;                        ;                           ; Reg:A0|Reg[2][27], Reg:A0|Reg[1][27], Reg:A0|Reg[0][27], Reg:A0|Reg[15][26],              ;
+;                        ;                           ; Reg:A0|Reg[14][26], Reg:A0|Reg[13][26], Reg:A0|Reg[12][26], Reg:A0|Reg[11][26],           ;
+;                        ;                           ; Reg:A0|Reg[10][26], Reg:A0|Reg[9][26], Reg:A0|Reg[8][26], Reg:A0|Reg[7][26],              ;
+;                        ;                           ; Reg:A0|Reg[6][26], Reg:A0|Reg[5][26], Reg:A0|Reg[4][26], Reg:A0|Reg[3][26],               ;
+;                        ;                           ; Reg:A0|Reg[2][26], Reg:A0|Reg[1][26], Reg:A0|Reg[0][26], Reg:A0|Reg[15][25],              ;
+;                        ;                           ; Reg:A0|Reg[14][25], Reg:A0|Reg[13][25], Reg:A0|Reg[12][25], Reg:A0|Reg[11][25],           ;
+;                        ;                           ; Reg:A0|Reg[10][25], Reg:A0|Reg[9][25], Reg:A0|Reg[8][25], Reg:A0|Reg[7][25],              ;
+;                        ;                           ; Reg:A0|Reg[6][25], Reg:A0|Reg[5][25], Reg:A0|Reg[4][25], Reg:A0|Reg[3][25],               ;
+;                        ;                           ; Reg:A0|Reg[2][25], Reg:A0|Reg[1][25], Reg:A0|Reg[0][25], Reg:A0|Reg[15][24],              ;
+;                        ;                           ; Reg:A0|Reg[14][24], Reg:A0|Reg[13][24], Reg:A0|Reg[12][24], Reg:A0|Reg[11][24],           ;
+;                        ;                           ; Reg:A0|Reg[10][24], Reg:A0|Reg[9][24], Reg:A0|Reg[8][24], Reg:A0|Reg[7][24],              ;
+;                        ;                           ; Reg:A0|Reg[6][24], Reg:A0|Reg[5][24], Reg:A0|Reg[4][24], Reg:A0|Reg[3][24],               ;
+;                        ;                           ; Reg:A0|Reg[2][24], Reg:A0|Reg[1][24], Reg:A0|Reg[0][24], Reg:A0|Reg[15][23],              ;
+;                        ;                           ; Reg:A0|Reg[14][23], Reg:A0|Reg[13][23], Reg:A0|Reg[12][23], Reg:A0|Reg[11][23],           ;
+;                        ;                           ; Reg:A0|Reg[10][23], Reg:A0|Reg[9][23], Reg:A0|Reg[8][23], Reg:A0|Reg[7][23],              ;
+;                        ;                           ; Reg:A0|Reg[6][23], Reg:A0|Reg[5][23], Reg:A0|Reg[4][23], Reg:A0|Reg[3][23],               ;
+;                        ;                           ; Reg:A0|Reg[2][23], Reg:A0|Reg[1][23], Reg:A0|Reg[0][23], Reg:A0|Reg[15][22],              ;
+;                        ;                           ; Reg:A0|Reg[14][22], Reg:A0|Reg[13][22], Reg:A0|Reg[12][22], Reg:A0|Reg[11][22],           ;
+;                        ;                           ; Reg:A0|Reg[10][22], Reg:A0|Reg[9][22], Reg:A0|Reg[8][22], Reg:A0|Reg[7][22],              ;
+;                        ;                           ; Reg:A0|Reg[6][22], Reg:A0|Reg[5][22], Reg:A0|Reg[4][22], Reg:A0|Reg[3][22],               ;
+;                        ;                           ; Reg:A0|Reg[2][22], Reg:A0|Reg[1][22], Reg:A0|Reg[0][22], Reg:A0|Reg[15][21],              ;
+;                        ;                           ; Reg:A0|Reg[14][21], Reg:A0|Reg[13][21], Reg:A0|Reg[12][21], Reg:A0|Reg[11][21],           ;
+;                        ;                           ; Reg:A0|Reg[10][21], Reg:A0|Reg[9][21], Reg:A0|Reg[8][21], Reg:A0|Reg[7][21],              ;
+;                        ;                           ; Reg:A0|Reg[6][21], Reg:A0|Reg[5][21], Reg:A0|Reg[4][21], Reg:A0|Reg[3][21],               ;
+;                        ;                           ; Reg:A0|Reg[2][21], Reg:A0|Reg[1][21], Reg:A0|Reg[0][21], Reg:A0|Reg[15][20],              ;
+;                        ;                           ; Reg:A0|Reg[14][20], Reg:A0|Reg[13][20], Reg:A0|Reg[12][20], Reg:A0|Reg[11][20],           ;
+;                        ;                           ; Reg:A0|Reg[10][20], Reg:A0|Reg[9][20], Reg:A0|Reg[8][20], Reg:A0|Reg[7][20],              ;
+;                        ;                           ; Reg:A0|Reg[6][20], Reg:A0|Reg[5][20], Reg:A0|Reg[4][20], Reg:A0|Reg[3][20],               ;
+;                        ;                           ; Reg:A0|Reg[2][20], Reg:A0|Reg[1][20], Reg:A0|Reg[0][20], Reg:A0|Reg[15][19],              ;
+;                        ;                           ; Reg:A0|Reg[14][19], Reg:A0|Reg[13][19], Reg:A0|Reg[12][19], Reg:A0|Reg[11][19],           ;
+;                        ;                           ; Reg:A0|Reg[10][19], Reg:A0|Reg[9][19], Reg:A0|Reg[8][19], Reg:A0|Reg[7][19],              ;
+;                        ;                           ; Reg:A0|Reg[6][19], Reg:A0|Reg[5][19], Reg:A0|Reg[4][19], Reg:A0|Reg[3][19],               ;
+;                        ;                           ; Reg:A0|Reg[2][19], Reg:A0|Reg[1][19], Reg:A0|Reg[0][19], Reg:A0|Reg[15][18],              ;
+;                        ;                           ; Reg:A0|Reg[14][18], Reg:A0|Reg[13][18], Reg:A0|Reg[12][18], Reg:A0|Reg[11][18],           ;
+;                        ;                           ; Reg:A0|Reg[10][18], Reg:A0|Reg[9][18], Reg:A0|Reg[8][18], Reg:A0|Reg[7][18],              ;
+;                        ;                           ; Reg:A0|Reg[6][18], Reg:A0|Reg[5][18], Reg:A0|Reg[4][18], Reg:A0|Reg[3][18],               ;
+;                        ;                           ; Reg:A0|Reg[2][18], Reg:A0|Reg[1][18], Reg:A0|Reg[0][18], Reg:A0|Reg[15][17],              ;
+;                        ;                           ; Reg:A0|Reg[14][17], Reg:A0|Reg[13][17], Reg:A0|Reg[12][17], Reg:A0|Reg[11][17],           ;
+;                        ;                           ; Reg:A0|Reg[10][17], Reg:A0|Reg[9][17], Reg:A0|Reg[8][17], Reg:A0|Reg[7][17],              ;
+;                        ;                           ; Reg:A0|Reg[6][17], Reg:A0|Reg[5][17], Reg:A0|Reg[4][17], Reg:A0|Reg[3][17],               ;
+;                        ;                           ; Reg:A0|Reg[2][17], Reg:A0|Reg[1][17], Reg:A0|Reg[0][17], Reg:A0|Reg[15][16],              ;
+;                        ;                           ; Reg:A0|Reg[14][16], Reg:A0|Reg[13][16], Reg:A0|Reg[12][16], Reg:A0|Reg[11][16],           ;
+;                        ;                           ; Reg:A0|Reg[10][16], Reg:A0|Reg[9][16], Reg:A0|Reg[8][16], Reg:A0|Reg[7][16],              ;
+;                        ;                           ; Reg:A0|Reg[6][16], Reg:A0|Reg[5][16], Reg:A0|Reg[4][16], Reg:A0|Reg[3][16],               ;
+;                        ;                           ; Reg:A0|Reg[2][16], Reg:A0|Reg[1][16], Reg:A0|Reg[0][16], Reg:A0|Reg[15][15],              ;
+;                        ;                           ; Reg:A0|Reg[14][15], Reg:A0|Reg[13][15], Reg:A0|Reg[12][15], Reg:A0|Reg[11][15],           ;
+;                        ;                           ; Reg:A0|Reg[10][15], Reg:A0|Reg[9][15], Reg:A0|Reg[8][15], Reg:A0|Reg[7][15],              ;
+;                        ;                           ; Reg:A0|Reg[6][15], Reg:A0|Reg[5][15], Reg:A0|Reg[4][15], Reg:A0|Reg[3][15],               ;
+;                        ;                           ; Reg:A0|Reg[2][15], Reg:A0|Reg[1][15], Reg:A0|Reg[0][15], Reg:A0|Reg[15][14],              ;
+;                        ;                           ; Reg:A0|Reg[14][14], Reg:A0|Reg[13][14], Reg:A0|Reg[12][14], Reg:A0|Reg[11][14],           ;
+;                        ;                           ; Reg:A0|Reg[10][14], Reg:A0|Reg[9][14], Reg:A0|Reg[8][14], Reg:A0|Reg[7][14],              ;
+;                        ;                           ; Reg:A0|Reg[6][14], Reg:A0|Reg[5][14], Reg:A0|Reg[4][14], Reg:A0|Reg[3][14],               ;
+;                        ;                           ; Reg:A0|Reg[2][14], Reg:A0|Reg[1][14], Reg:A0|Reg[0][14], Reg:A0|Reg[15][13],              ;
+;                        ;                           ; Reg:A0|Reg[14][13], Reg:A0|Reg[13][13], Reg:A0|Reg[12][13], Reg:A0|Reg[11][13],           ;
+;                        ;                           ; Reg:A0|Reg[10][13], Reg:A0|Reg[9][13], Reg:A0|Reg[8][13], Reg:A0|Reg[7][13],              ;
+;                        ;                           ; Reg:A0|Reg[6][13], Reg:A0|Reg[5][13], Reg:A0|Reg[4][13], Reg:A0|Reg[3][13],               ;
+;                        ;                           ; Reg:A0|Reg[2][13], Reg:A0|Reg[1][13], Reg:A0|Reg[0][13], Reg:A0|Reg[15][12],              ;
+;                        ;                           ; Reg:A0|Reg[14][12], Reg:A0|Reg[13][12], Reg:A0|Reg[12][12], Reg:A0|Reg[11][12],           ;
+;                        ;                           ; Reg:A0|Reg[10][12], Reg:A0|Reg[9][12], Reg:A0|Reg[8][12], Reg:A0|Reg[7][12],              ;
+;                        ;                           ; Reg:A0|Reg[6][12], Reg:A0|Reg[5][12], Reg:A0|Reg[4][12], Reg:A0|Reg[3][12],               ;
+;                        ;                           ; Reg:A0|Reg[2][12], Reg:A0|Reg[1][12], Reg:A0|Reg[0][12], Reg:A0|Reg[15][11],              ;
+;                        ;                           ; Reg:A0|Reg[14][11], Reg:A0|Reg[13][11], Reg:A0|Reg[12][11], Reg:A0|Reg[11][11],           ;
+;                        ;                           ; Reg:A0|Reg[10][11], Reg:A0|Reg[9][11], Reg:A0|Reg[8][11], Reg:A0|Reg[7][11],              ;
+;                        ;                           ; Reg:A0|Reg[6][11], Reg:A0|Reg[5][11], Reg:A0|Reg[4][11], Reg:A0|Reg[3][11],               ;
+;                        ;                           ; Reg:A0|Reg[2][11], Reg:A0|Reg[1][11], Reg:A0|Reg[0][11], Reg:A0|Reg[15][10],              ;
+;                        ;                           ; Reg:A0|Reg[14][10], Reg:A0|Reg[13][10], Reg:A0|Reg[12][10], Reg:A0|Reg[11][10],           ;
+;                        ;                           ; Reg:A0|Reg[10][10], Reg:A0|Reg[9][10], Reg:A0|Reg[8][10], Reg:A0|Reg[7][10],              ;
+;                        ;                           ; Reg:A0|Reg[6][10], Reg:A0|Reg[5][10], Reg:A0|Reg[4][10], Reg:A0|Reg[3][10],               ;
+;                        ;                           ; Reg:A0|Reg[2][10], Reg:A0|Reg[1][10], Reg:A0|Reg[0][10], Reg:A0|Reg[15][9],               ;
+;                        ;                           ; Reg:A0|Reg[14][9], Reg:A0|Reg[13][9], Reg:A0|Reg[12][9], Reg:A0|Reg[11][9],               ;
+;                        ;                           ; Reg:A0|Reg[10][9], Reg:A0|Reg[9][9], Reg:A0|Reg[8][9], Reg:A0|Reg[7][9],                  ;
+;                        ;                           ; Reg:A0|Reg[6][9], Reg:A0|Reg[5][9], Reg:A0|Reg[4][9], Reg:A0|Reg[3][9], Reg:A0|Reg[2][9], ;
+;                        ;                           ; Reg:A0|Reg[1][9], Reg:A0|Reg[0][9], Reg:A0|Reg[15][8], Reg:A0|Reg[14][8],                 ;
+;                        ;                           ; Reg:A0|Reg[13][8], Reg:A0|Reg[12][8], Reg:A0|Reg[11][8], Reg:A0|Reg[10][8],               ;
+;                        ;                           ; Reg:A0|Reg[9][8], Reg:A0|Reg[8][8], Reg:A0|Reg[7][8], Reg:A0|Reg[6][8], Reg:A0|Reg[5][8], ;
+;                        ;                           ; Reg:A0|Reg[4][8], Reg:A0|Reg[3][8], Reg:A0|Reg[2][8], Reg:A0|Reg[1][8], Reg:A0|Reg[0][8], ;
+;                        ;                           ; Reg:A0|data_out[7], Reg:A0|data_out[6], Reg:A0|data_out[5], Reg:A0|data_out[4],           ;
+;                        ;                           ; Reg:A0|data_out[27], Reg:A0|data_out[26], Reg:A0|data_out[25], Reg:A0|data_out[24],       ;
+;                        ;                           ; Reg:A0|data_out[23], Reg:A0|data_out[22], Reg:A0|data_out[21], Reg:A0|data_out[20],       ;
+;                        ;                           ; Reg:A0|data_out[19], Reg:A0|data_out[18], Reg:A0|data_out[17], Reg:A0|data_out[16],       ;
+;                        ;                           ; Reg:A0|data_out[15], Reg:A0|data_out[14], Reg:A0|data_out[13], Reg:A0|data_out[12],       ;
+;                        ;                           ; Reg:A0|data_out[11], Reg:A0|data_out[10], Reg:A0|data_out[9], Reg:A0|data_out[8]          ;
+; decoder:D0|value_B[4]  ; Stuck at GND              ; Reg:B0|Reg[15][7], Reg:B0|Reg[14][7], Reg:B0|Reg[13][7], Reg:B0|Reg[12][7],               ;
+;                        ; due to stuck port data_in ; Reg:B0|Reg[11][7], Reg:B0|Reg[10][7], Reg:B0|Reg[9][7], Reg:B0|Reg[8][7],                 ;
+;                        ;                           ; Reg:B0|Reg[7][7], Reg:B0|Reg[6][7], Reg:B0|Reg[5][7], Reg:B0|Reg[4][7], Reg:B0|Reg[3][7], ;
+;                        ;                           ; Reg:B0|Reg[2][7], Reg:B0|Reg[1][7], Reg:B0|Reg[0][7], Reg:B0|Reg[15][6],                  ;
+;                        ;                           ; Reg:B0|Reg[14][6], Reg:B0|Reg[13][6], Reg:B0|Reg[12][6], Reg:B0|Reg[11][6],               ;
+;                        ;                           ; Reg:B0|Reg[10][6], Reg:B0|Reg[9][6], Reg:B0|Reg[8][6], Reg:B0|Reg[7][6],                  ;
+;                        ;                           ; Reg:B0|Reg[6][6], Reg:B0|Reg[5][6], Reg:B0|Reg[4][6], Reg:B0|Reg[3][6], Reg:B0|Reg[2][6], ;
+;                        ;                           ; Reg:B0|Reg[1][6], Reg:B0|Reg[0][6], Reg:B0|Reg[15][5], Reg:B0|Reg[14][5],                 ;
+;                        ;                           ; Reg:B0|Reg[13][5], Reg:B0|Reg[12][5], Reg:B0|Reg[11][5], Reg:B0|Reg[10][5],               ;
+;                        ;                           ; Reg:B0|Reg[9][5], Reg:B0|Reg[8][5], Reg:B0|Reg[7][5], Reg:B0|Reg[6][5], Reg:B0|Reg[5][5], ;
+;                        ;                           ; Reg:B0|Reg[4][5], Reg:B0|Reg[3][5], Reg:B0|Reg[2][5], Reg:B0|Reg[1][5], Reg:B0|Reg[0][5], ;
+;                        ;                           ; Reg:B0|Reg[15][4], Reg:B0|Reg[14][4], Reg:B0|Reg[13][4], Reg:B0|Reg[12][4],               ;
+;                        ;                           ; Reg:B0|Reg[11][4], Reg:B0|Reg[10][4], Reg:B0|Reg[9][4], Reg:B0|Reg[8][4],                 ;
+;                        ;                           ; Reg:B0|Reg[7][4], Reg:B0|Reg[6][4], Reg:B0|Reg[5][4], Reg:B0|Reg[4][4], Reg:B0|Reg[3][4], ;
+;                        ;                           ; Reg:B0|Reg[2][4], Reg:B0|Reg[1][4], Reg:B0|Reg[0][4], Reg:B0|Reg[15][27],                 ;
+;                        ;                           ; Reg:B0|Reg[14][27], Reg:B0|Reg[13][27], Reg:B0|Reg[12][27], Reg:B0|Reg[11][27],           ;
+;                        ;                           ; Reg:B0|Reg[10][27], Reg:B0|Reg[9][27], Reg:B0|Reg[8][27], Reg:B0|Reg[7][27],              ;
+;                        ;                           ; Reg:B0|Reg[6][27], Reg:B0|Reg[5][27], Reg:B0|Reg[4][27], Reg:B0|Reg[3][27],               ;
+;                        ;                           ; Reg:B0|Reg[2][27], Reg:B0|Reg[1][27], Reg:B0|Reg[0][27], Reg:B0|Reg[15][26],              ;
+;                        ;                           ; Reg:B0|Reg[14][26], Reg:B0|Reg[13][26], Reg:B0|Reg[12][26], Reg:B0|Reg[11][26],           ;
+;                        ;                           ; Reg:B0|Reg[10][26], Reg:B0|Reg[9][26], Reg:B0|Reg[8][26], Reg:B0|Reg[7][26],              ;
+;                        ;                           ; Reg:B0|Reg[6][26], Reg:B0|Reg[5][26], Reg:B0|Reg[4][26], Reg:B0|Reg[3][26],               ;
+;                        ;                           ; Reg:B0|Reg[2][26], Reg:B0|Reg[1][26], Reg:B0|Reg[0][26], Reg:B0|Reg[15][25],              ;
+;                        ;                           ; Reg:B0|Reg[14][25], Reg:B0|Reg[13][25], Reg:B0|Reg[12][25], Reg:B0|Reg[11][25],           ;
+;                        ;                           ; Reg:B0|Reg[10][25], Reg:B0|Reg[9][25], Reg:B0|Reg[8][25], Reg:B0|Reg[7][25],              ;
+;                        ;                           ; Reg:B0|Reg[6][25], Reg:B0|Reg[5][25], Reg:B0|Reg[4][25], Reg:B0|Reg[3][25],               ;
+;                        ;                           ; Reg:B0|Reg[2][25], Reg:B0|Reg[1][25], Reg:B0|Reg[0][25], Reg:B0|Reg[15][24],              ;
+;                        ;                           ; Reg:B0|Reg[14][24], Reg:B0|Reg[13][24], Reg:B0|Reg[12][24], Reg:B0|Reg[11][24],           ;
+;                        ;                           ; Reg:B0|Reg[10][24], Reg:B0|Reg[9][24], Reg:B0|Reg[8][24], Reg:B0|Reg[7][24],              ;
+;                        ;                           ; Reg:B0|Reg[6][24], Reg:B0|Reg[5][24], Reg:B0|Reg[4][24], Reg:B0|Reg[3][24],               ;
+;                        ;                           ; Reg:B0|Reg[2][24], Reg:B0|Reg[1][24], Reg:B0|Reg[0][24], Reg:B0|Reg[15][23],              ;
+;                        ;                           ; Reg:B0|Reg[14][23], Reg:B0|Reg[13][23], Reg:B0|Reg[12][23], Reg:B0|Reg[11][23],           ;
+;                        ;                           ; Reg:B0|Reg[10][23], Reg:B0|Reg[9][23], Reg:B0|Reg[8][23], Reg:B0|Reg[7][23],              ;
+;                        ;                           ; Reg:B0|Reg[6][23], Reg:B0|Reg[5][23], Reg:B0|Reg[4][23], Reg:B0|Reg[3][23],               ;
+;                        ;                           ; Reg:B0|Reg[2][23], Reg:B0|Reg[1][23], Reg:B0|Reg[0][23], Reg:B0|Reg[15][22],              ;
+;                        ;                           ; Reg:B0|Reg[14][22], Reg:B0|Reg[13][22], Reg:B0|Reg[12][22], Reg:B0|Reg[11][22],           ;
+;                        ;                           ; Reg:B0|Reg[10][22], Reg:B0|Reg[9][22], Reg:B0|Reg[8][22], Reg:B0|Reg[7][22],              ;
+;                        ;                           ; Reg:B0|Reg[6][22], Reg:B0|Reg[5][22], Reg:B0|Reg[4][22], Reg:B0|Reg[3][22],               ;
+;                        ;                           ; Reg:B0|Reg[2][22], Reg:B0|Reg[1][22], Reg:B0|Reg[0][22], Reg:B0|Reg[15][21],              ;
+;                        ;                           ; Reg:B0|Reg[14][21], Reg:B0|Reg[13][21], Reg:B0|Reg[12][21], Reg:B0|Reg[11][21],           ;
+;                        ;                           ; Reg:B0|Reg[10][21], Reg:B0|Reg[9][21], Reg:B0|Reg[8][21], Reg:B0|Reg[7][21],              ;
+;                        ;                           ; Reg:B0|Reg[6][21], Reg:B0|Reg[5][21], Reg:B0|Reg[4][21], Reg:B0|Reg[3][21],               ;
+;                        ;                           ; Reg:B0|Reg[2][21], Reg:B0|Reg[1][21], Reg:B0|Reg[0][21], Reg:B0|Reg[15][20],              ;
+;                        ;                           ; Reg:B0|Reg[14][20], Reg:B0|Reg[13][20], Reg:B0|Reg[12][20], Reg:B0|Reg[11][20],           ;
+;                        ;                           ; Reg:B0|Reg[10][20], Reg:B0|Reg[9][20], Reg:B0|Reg[8][20], Reg:B0|Reg[7][20],              ;
+;                        ;                           ; Reg:B0|Reg[6][20], Reg:B0|Reg[5][20], Reg:B0|Reg[4][20], Reg:B0|Reg[3][20],               ;
+;                        ;                           ; Reg:B0|Reg[2][20], Reg:B0|Reg[1][20], Reg:B0|Reg[0][20], Reg:B0|Reg[15][19],              ;
+;                        ;                           ; Reg:B0|Reg[14][19], Reg:B0|Reg[13][19], Reg:B0|Reg[12][19], Reg:B0|Reg[11][19],           ;
+;                        ;                           ; Reg:B0|Reg[10][19], Reg:B0|Reg[9][19], Reg:B0|Reg[8][19], Reg:B0|Reg[7][19],              ;
+;                        ;                           ; Reg:B0|Reg[6][19], Reg:B0|Reg[5][19], Reg:B0|Reg[4][19], Reg:B0|Reg[3][19],               ;
+;                        ;                           ; Reg:B0|Reg[2][19], Reg:B0|Reg[1][19], Reg:B0|Reg[0][19], Reg:B0|Reg[15][18],              ;
+;                        ;                           ; Reg:B0|Reg[14][18], Reg:B0|Reg[13][18], Reg:B0|Reg[12][18], Reg:B0|Reg[11][18],           ;
+;                        ;                           ; Reg:B0|Reg[10][18], Reg:B0|Reg[9][18], Reg:B0|Reg[8][18], Reg:B0|Reg[7][18],              ;
+;                        ;                           ; Reg:B0|Reg[6][18], Reg:B0|Reg[5][18], Reg:B0|Reg[4][18], Reg:B0|Reg[3][18],               ;
+;                        ;                           ; Reg:B0|Reg[2][18], Reg:B0|Reg[1][18], Reg:B0|Reg[0][18], Reg:B0|Reg[15][17],              ;
+;                        ;                           ; Reg:B0|Reg[14][17], Reg:B0|Reg[13][17], Reg:B0|Reg[12][17], Reg:B0|Reg[11][17],           ;
+;                        ;                           ; Reg:B0|Reg[10][17], Reg:B0|Reg[9][17], Reg:B0|Reg[8][17], Reg:B0|Reg[7][17],              ;
+;                        ;                           ; Reg:B0|Reg[6][17], Reg:B0|Reg[5][17], Reg:B0|Reg[4][17], Reg:B0|Reg[3][17],               ;
+;                        ;                           ; Reg:B0|Reg[2][17], Reg:B0|Reg[1][17], Reg:B0|Reg[0][17], Reg:B0|Reg[15][16],              ;
+;                        ;                           ; Reg:B0|Reg[14][16], Reg:B0|Reg[13][16], Reg:B0|Reg[12][16], Reg:B0|Reg[11][16],           ;
+;                        ;                           ; Reg:B0|Reg[10][16], Reg:B0|Reg[9][16], Reg:B0|Reg[8][16], Reg:B0|Reg[7][16],              ;
+;                        ;                           ; Reg:B0|Reg[6][16], Reg:B0|Reg[5][16], Reg:B0|Reg[4][16], Reg:B0|Reg[3][16],               ;
+;                        ;                           ; Reg:B0|Reg[2][16], Reg:B0|Reg[1][16], Reg:B0|Reg[0][16], Reg:B0|Reg[15][15],              ;
+;                        ;                           ; Reg:B0|Reg[14][15], Reg:B0|Reg[13][15], Reg:B0|Reg[12][15], Reg:B0|Reg[11][15],           ;
+;                        ;                           ; Reg:B0|Reg[10][15], Reg:B0|Reg[9][15], Reg:B0|Reg[8][15], Reg:B0|Reg[7][15],              ;
+;                        ;                           ; Reg:B0|Reg[6][15], Reg:B0|Reg[5][15], Reg:B0|Reg[4][15], Reg:B0|Reg[3][15],               ;
+;                        ;                           ; Reg:B0|Reg[2][15], Reg:B0|Reg[1][15], Reg:B0|Reg[0][15], Reg:B0|Reg[15][14],              ;
+;                        ;                           ; Reg:B0|Reg[14][14], Reg:B0|Reg[13][14], Reg:B0|Reg[12][14], Reg:B0|Reg[11][14],           ;
+;                        ;                           ; Reg:B0|Reg[10][14], Reg:B0|Reg[9][14], Reg:B0|Reg[8][14], Reg:B0|Reg[7][14],              ;
+;                        ;                           ; Reg:B0|Reg[6][14], Reg:B0|Reg[5][14], Reg:B0|Reg[4][14], Reg:B0|Reg[3][14],               ;
+;                        ;                           ; Reg:B0|Reg[2][14], Reg:B0|Reg[1][14], Reg:B0|Reg[0][14], Reg:B0|Reg[15][13],              ;
+;                        ;                           ; Reg:B0|Reg[14][13], Reg:B0|Reg[13][13], Reg:B0|Reg[12][13], Reg:B0|Reg[11][13],           ;
+;                        ;                           ; Reg:B0|Reg[10][13], Reg:B0|Reg[9][13], Reg:B0|Reg[8][13], Reg:B0|Reg[7][13],              ;
+;                        ;                           ; Reg:B0|Reg[6][13], Reg:B0|Reg[5][13], Reg:B0|Reg[4][13], Reg:B0|Reg[3][13],               ;
+;                        ;                           ; Reg:B0|Reg[2][13], Reg:B0|Reg[1][13], Reg:B0|Reg[0][13], Reg:B0|Reg[15][12],              ;
+;                        ;                           ; Reg:B0|Reg[14][12], Reg:B0|Reg[13][12], Reg:B0|Reg[12][12], Reg:B0|Reg[11][12],           ;
+;                        ;                           ; Reg:B0|Reg[10][12], Reg:B0|Reg[9][12], Reg:B0|Reg[8][12], Reg:B0|Reg[7][12],              ;
+;                        ;                           ; Reg:B0|Reg[6][12], Reg:B0|Reg[5][12], Reg:B0|Reg[4][12], Reg:B0|Reg[3][12],               ;
+;                        ;                           ; Reg:B0|Reg[2][12], Reg:B0|Reg[1][12], Reg:B0|Reg[0][12], Reg:B0|Reg[15][11],              ;
+;                        ;                           ; Reg:B0|Reg[14][11], Reg:B0|Reg[13][11], Reg:B0|Reg[12][11], Reg:B0|Reg[11][11],           ;
+;                        ;                           ; Reg:B0|Reg[10][11], Reg:B0|Reg[9][11], Reg:B0|Reg[8][11], Reg:B0|Reg[7][11],              ;
+;                        ;                           ; Reg:B0|Reg[6][11], Reg:B0|Reg[5][11], Reg:B0|Reg[4][11], Reg:B0|Reg[3][11],               ;
+;                        ;                           ; Reg:B0|Reg[2][11], Reg:B0|Reg[1][11], Reg:B0|Reg[0][11], Reg:B0|Reg[15][10],              ;
+;                        ;                           ; Reg:B0|Reg[14][10], Reg:B0|Reg[13][10], Reg:B0|Reg[12][10], Reg:B0|Reg[11][10],           ;
+;                        ;                           ; Reg:B0|Reg[10][10], Reg:B0|Reg[9][10], Reg:B0|Reg[8][10], Reg:B0|Reg[7][10],              ;
+;                        ;                           ; Reg:B0|Reg[6][10], Reg:B0|Reg[5][10], Reg:B0|Reg[4][10], Reg:B0|Reg[3][10],               ;
+;                        ;                           ; Reg:B0|Reg[2][10], Reg:B0|Reg[1][10], Reg:B0|Reg[0][10], Reg:B0|Reg[15][9],               ;
+;                        ;                           ; Reg:B0|Reg[14][9], Reg:B0|Reg[13][9], Reg:B0|Reg[12][9], Reg:B0|Reg[11][9],               ;
+;                        ;                           ; Reg:B0|Reg[10][9], Reg:B0|Reg[9][9], Reg:B0|Reg[8][9], Reg:B0|Reg[7][9],                  ;
+;                        ;                           ; Reg:B0|Reg[6][9], Reg:B0|Reg[5][9], Reg:B0|Reg[4][9], Reg:B0|Reg[3][9], Reg:B0|Reg[2][9], ;
+;                        ;                           ; Reg:B0|Reg[1][9], Reg:B0|Reg[0][9], Reg:B0|Reg[15][8], Reg:B0|Reg[14][8],                 ;
+;                        ;                           ; Reg:B0|Reg[13][8], Reg:B0|Reg[12][8], Reg:B0|Reg[11][8], Reg:B0|Reg[10][8],               ;
+;                        ;                           ; Reg:B0|Reg[9][8], Reg:B0|Reg[8][8], Reg:B0|Reg[7][8], Reg:B0|Reg[6][8], Reg:B0|Reg[5][8], ;
+;                        ;                           ; Reg:B0|Reg[4][8], Reg:B0|Reg[3][8], Reg:B0|Reg[2][8], Reg:B0|Reg[1][8], Reg:B0|Reg[0][8], ;
+;                        ;                           ; Reg:B0|data_out[7], Reg:B0|data_out[6], Reg:B0|data_out[5], Reg:B0|data_out[4],           ;
+;                        ;                           ; Reg:B0|data_out[27], Reg:B0|data_out[26], Reg:B0|data_out[25], Reg:B0|data_out[24],       ;
+;                        ;                           ; Reg:B0|data_out[23], Reg:B0|data_out[22], Reg:B0|data_out[21], Reg:B0|data_out[20],       ;
+;                        ;                           ; Reg:B0|data_out[19], Reg:B0|data_out[18], Reg:B0|data_out[17], Reg:B0|data_out[16],       ;
+;                        ;                           ; Reg:B0|data_out[15], Reg:B0|data_out[14], Reg:B0|data_out[13], Reg:B0|data_out[12],       ;
+;                        ;                           ; Reg:B0|data_out[11], Reg:B0|data_out[10], Reg:B0|data_out[9], Reg:B0|data_out[8]          ;
++------------------------+---------------------------+-------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 302   ;
+; Number of registers using Synchronous Clear  ; 256   ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 6     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 296   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[0][28]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[1][0]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[2][29]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[3][3]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[4][30]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[5][29]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[6][29]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[7][30]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[8][0]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[9][29]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[10][28]      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[11][29]      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[12][30]      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[13][31]      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[14][0]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:A0|Reg[15][29]      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[0][3]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[1][2]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[2][2]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[3][30]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[4][30]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[5][1]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[6][3]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[7][30]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[8][2]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[9][2]        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[10][2]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[11][2]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[12][2]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[13][2]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[14][28]      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |NuCore|Reg:B0|Reg[15][1]       ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |NuCore|decoder:D0|address_B[3] ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; Yes        ; |NuCore|Reg:A0|data_out[28]     ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; Yes        ; |NuCore|Reg:B0|data_out[0]      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |NuCore|ALU:U0|ShiftLeft0       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |NuCore|ALU:U0|ShiftLeft0       ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |NuCore|ALU:U0|ShiftLeft0       ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |NuCore|ALU:U0|ShiftLeft0       ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |NuCore|ALU:U0|ShiftLeft0       ;
+; 8:1                ; 9 bits    ; 45 LEs        ; 36 LEs               ; 9 LEs                  ; No         ; |NuCore|ALU:U0|Mux42            ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |NuCore|ALU:U0|Mux23            ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |NuCore|ALU:U0|Mux30            ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |NuCore|ALU:U0|Mux51            ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |NuCore|ALU:U0|Mux59            ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |NuCore|ALU:U0|Mux19            ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |NuCore|ALU:U0|Mux47            ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |NuCore|ALU:U0|Mux63            ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |NuCore|ALU:U0|Mux26            ;
+; 12:1               ; 3 bits    ; 24 LEs        ; 21 LEs               ; 3 LEs                  ; No         ; |NuCore|ALU:U0|Mux54            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Program_Counter:P0 ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; n              ; 6     ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seg_7:s0 ;
++----------------+-------+------------------------------+
+; Parameter Name ; Value ; Type                         ;
++----------------+-------+------------------------------+
+; n              ; 4     ; Signed Integer               ;
++----------------+-------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seg_7:s1 ;
++----------------+-------+------------------------------+
+; Parameter Name ; Value ; Type                         ;
++----------------+-------+------------------------------+
+; n              ; 4     ; Signed Integer               ;
++----------------+-------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seg_7:s2 ;
++----------------+-------+------------------------------+
+; Parameter Name ; Value ; Type                         ;
++----------------+-------+------------------------------+
+; n              ; 4     ; Signed Integer               ;
++----------------+-------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seg_7:s3 ;
++----------------+-------+------------------------------+
+; Parameter Name ; Value ; Type                         ;
++----------------+-------+------------------------------+
+; n              ; 4     ; Signed Integer               ;
++----------------+-------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seg_7:s4 ;
++----------------+-------+------------------------------+
+; Parameter Name ; Value ; Type                         ;
++----------------+-------+------------------------------+
+; n              ; 4     ; Signed Integer               ;
++----------------+-------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seg_7:s5 ;
++----------------+-------+------------------------------+
+; Parameter Name ; Value ; Type                         ;
++----------------+-------+------------------------------+
+; n              ; 4     ; Signed Integer               ;
++----------------+-------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:U0"                                                                                                                    ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                    ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
+; Out  ; Output ; Warning  ; Output or bidir port (64 bits) is wider than the port expression (32 bits) it drives; bit(s) "Out[63..32]" have no fanouts ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 302                         ;
+;     CLR               ; 6                           ;
+;     ENA               ; 40                          ;
+;     ENA SCLR          ; 256                         ;
+; arriav_lcell_comb     ; 385                         ;
+;     arith             ; 33                          ;
+;         0 data inputs ; 25                          ;
+;         2 data inputs ; 8                           ;
+;     normal            ; 319                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 12                          ;
+;         3 data inputs ; 26                          ;
+;         4 data inputs ; 104                         ;
+;         5 data inputs ; 62                          ;
+;         6 data inputs ; 108                         ;
+;     shared            ; 33                          ;
+;         0 data inputs ; 25                          ;
+;         2 data inputs ; 8                           ;
+; boundary_port         ; 141                         ;
+;                       ;                             ;
+; Max LUT depth         ; 7.10                        ;
+; Average LUT depth     ; 3.54                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Sun May 22 14:25:41 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off NuCore -c NuCore
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file instruction_queue.v
+    Info (12023): Found entity 1: Instruction_Queue File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Instruction_Queue.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alu.v
+    Info (12023): Found entity 1: ALU File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/ALU.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file program_counter.v
+    Info (12023): Found entity 1: Program_Counter File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Program_Counter.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file nucore.v
+    Info (12023): Found entity 1: NuCore File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 2
+Warning (12019): Can't analyze file -- file Control_path.v is missing
+Info (12021): Found 1 design units, including 1 entities, in source file reg.v
+    Info (12023): Found entity 1: Reg File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Reg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file seg_7.v
+    Info (12023): Found entity 1: seg_7 File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/seg_7.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file decoder.v
+    Info (12023): Found entity 1: decoder File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/decoder.v Line: 1
+Warning (12019): Can't analyze file -- file Flags_update.v is missing
+Warning (12019): Can't analyze file -- file tb.v is missing
+Info (12127): Elaborating entity "NuCore" for the top level hierarchy
+Info (12128): Elaborating entity "Program_Counter" for hierarchy "Program_Counter:P0" File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 22
+Warning (10230): Verilog HDL assignment warning at Program_Counter.v(12): truncated value with size 32 to match size of target (6) File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Program_Counter.v Line: 12
+Info (12128): Elaborating entity "Instruction_Queue" for hierarchy "Instruction_Queue:I0" File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 24
+Warning (10850): Verilog HDL warning at Instruction_Queue.v(11): number of words (49) in memory file does not match the number of elements in the address range [0:63] File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Instruction_Queue.v Line: 11
+Warning (10850): Verilog HDL warning at Instruction_Queue.v(14): number of words (49) in memory file does not match the number of elements in the address range [0:63] File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Instruction_Queue.v Line: 14
+Warning (10030): Net "memory.data_a" at Instruction_Queue.v(3) has no driver or initial value, using a default initial value '0' File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Instruction_Queue.v Line: 3
+Warning (10030): Net "memory.waddr_a" at Instruction_Queue.v(3) has no driver or initial value, using a default initial value '0' File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Instruction_Queue.v Line: 3
+Warning (10030): Net "memory.we_a" at Instruction_Queue.v(3) has no driver or initial value, using a default initial value '0' File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Instruction_Queue.v Line: 3
+Warning (12125): Using design file instruction_update.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: Instruction_update File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 1
+Info (12128): Elaborating entity "Instruction_update" for hierarchy "Instruction_update:I1" File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 26
+Warning (10235): Verilog HDL Always Construct warning at instruction_update.v(9): variable "reset" is read inside the Always Construct but isn't in the Always Construct's Event Control File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 9
+Warning (10240): Verilog HDL Always Construct warning at instruction_update.v(6): inferring latch(es) for variable "write_A", which holds its previous value in one or more paths through the always construct File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 6
+Warning (10240): Verilog HDL Always Construct warning at instruction_update.v(6): inferring latch(es) for variable "write_B", which holds its previous value in one or more paths through the always construct File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 6
+Warning (10240): Verilog HDL Always Construct warning at instruction_update.v(6): inferring latch(es) for variable "read_A", which holds its previous value in one or more paths through the always construct File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 6
+Warning (10240): Verilog HDL Always Construct warning at instruction_update.v(6): inferring latch(es) for variable "read_B", which holds its previous value in one or more paths through the always construct File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 6
+Info (10041): Inferred latch for "read_B" at instruction_update.v(15) File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 15
+Info (10041): Inferred latch for "read_A" at instruction_update.v(15) File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 15
+Info (10041): Inferred latch for "write_B" at instruction_update.v(15) File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 15
+Info (10041): Inferred latch for "write_A" at instruction_update.v(15) File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 15
+Info (12128): Elaborating entity "decoder" for hierarchy "decoder:D0" File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 28
+Info (12128): Elaborating entity "Reg" for hierarchy "Reg:A0" File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 30
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:U0" File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 34
+Info (12128): Elaborating entity "seg_7" for hierarchy "seg_7:s0" File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 38
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276004): RAM logic "Instruction_Queue:I0|memory" is uninferred due to inappropriate RAM size File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/Instruction_Queue.v Line: 3
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/db/NuCore.ram0_Instruction_Queue_57896bdb.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "Instruction_update:I1|read_B" merged with LATCH primitive "Instruction_update:I1|read_A" File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/instruction_update.v Line: 4
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX1[6]" is stuck at VCC File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX1[5]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX1[4]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX1[3]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX3[6]" is stuck at VCC File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX3[5]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX3[4]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX3[3]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX3[2]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX3[1]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "HEX3[0]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 8
+    Warning (13410): Pin "Data_A[4]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[5]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[6]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[7]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[8]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[9]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[10]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[11]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[12]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[13]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[14]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[15]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[16]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[17]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[18]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[19]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[20]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[21]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[22]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[23]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[24]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[25]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[26]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_A[27]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[4]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[5]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[6]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[7]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[8]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[9]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[10]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[11]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[12]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[13]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[14]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[15]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[16]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[17]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[18]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[19]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[20]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[21]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[22]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[23]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[24]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[25]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[26]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+    Warning (13410): Pin "Data_B[27]" is stuck at GND File: G:/My Drive/EE/EE - 06/Digital System Design/Assignments/Assignment 2/dsd assignment 2/NuCore.v Line: 20
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 796 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 139 output pins
+    Info (21061): Implemented 655 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 81 warnings
+    Info: Peak virtual memory: 4849 megabytes
+    Info: Processing ended: Sun May 22 14:25:53 2022
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:20
+
+

@@ -1,0 +1,45 @@
+module Instruction_update(instruction, write_A, write_B, reset, reset_A, reset_B, read_A, read_B);
+input reset;
+input [38:0] instruction;
+output reg write_A, write_B, reset_A, reset_B, read_A, read_B;
+//checks the last three bits of instruction to accordingly update flags for the operand registers
+always @(instruction[38:36])
+	begin
+	
+	if (!reset) begin
+	reset_A = 1;
+	reset_B = 1;
+	end
+	
+	else begin
+		case (instruction[38:36])
+		
+			3'b000: begin
+			write_A = 0; write_B = 0;
+			reset_A = 1; reset_B = 1;
+			read_A = 0;  read_B = 0;  end
+			
+			3'b001: begin
+			write_A = 1; write_B = 0;
+			reset_A = 0; reset_B = 0;
+			read_A = 0;  read_B = 0;  end
+			
+			3'b010: begin
+			write_A = 0; write_B = 1;
+			reset_A = 0; reset_B = 0;
+			read_A = 0;  read_B = 0;  end
+			
+			3'b011, 3'b100, 3'b101, 3'b110, 3'b111: begin
+			write_A = 0; write_B = 0;
+			reset_A = 0; reset_B = 0;
+			read_A = 1;  read_B = 1; end
+
+			default: begin
+			write_A = 1'bx; write_B = 1'bx;
+         reset_A = 1'bx; reset_B = 1'bx;
+	      read_A = 1'bx;  read_B = 1'bx; end
+		endcase
+		end
+	end
+
+endmodule

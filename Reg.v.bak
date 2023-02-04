@@ -1,0 +1,32 @@
+module Reg(address, value, write, reset, read, data_out);
+
+input [3:0] address;
+input [31:0] value;
+input write, reset, read;
+output reg [31:0] data_out;
+integer i;
+reg [31:0] Reg_B [15:0];
+	
+
+	
+always @(*)
+	begin
+		if (reset == 1)
+		begin
+			for (i = 0; i < 16; i = i + 1)
+				begin
+					Reg_B[i] = 0;
+				end
+		end
+		else if (write == 1)
+				begin
+					Reg_B[address] = value;
+				end
+		else if (read == 1)
+				begin
+					data_out = Reg_B[address];
+				end
+	end
+
+endmodule
+
