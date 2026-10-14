@@ -1,8 +1,11 @@
 # Simulation output
 build/
-*.vcd
 *.wlf
-*.vvp
+
+# ModelSim (sim/modelsim.do run from the project root)
+work/
+transcript
+modelsim.ini
 
 # Quartus build artifacts
 db/

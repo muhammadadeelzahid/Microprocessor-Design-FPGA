@@ -12,17 +12,29 @@
 //   2. Assert reset part-way through the program, check that the outputs
 //      clear immediately, release and run the program again.
 //
-// Override the program with -DPROGRAM_FILE='"path"' at compile time.
+// Run with ModelSim-Altera, either from Quartus (Tools > Run Simulation
+// Tool > RTL Simulation, NativeLink) or from the project root with
+// `vsim -c -do "do sim/modelsim.do; quit -f"` / `make`.
+//
+// Override the program with +define+PROGRAM_FILE="path" at compile time.
+// ModelSim defines MODEL_TECH; NativeLink runs it in
+// <project>/simulation/modelsim, so the ModelSim default points two
+// directories up to find memory.dat. The plain default serves any other
+// simulator started from the project root.
 
 `ifndef PROGRAM_FILE
-`define PROGRAM_FILE "memory.dat"
+  `ifdef MODEL_TECH
+    `define PROGRAM_FILE "../../memory.dat"
+  `else
+    `define PROGRAM_FILE "memory.dat"
+  `endif
 `endif
 
 module NuCore_TB;
 
-    `include "nucore_opcodes.vh"
+    `include "../rtl/nucore_opcodes.vh"
 
-    localparam CLK_PERIOD       = 20;   // ns
+    localparam CLK_PERIOD       = 10;   // ns, as in the design report
     localparam PC_WIDTH         = 6;
     localparam PROGRAM_DEPTH    = 1 << PC_WIDTH;
     localparam PIPELINE_LATENCY = 2;    // clocks from fetch to visible result
@@ -72,6 +84,7 @@ module NuCore_TB;
     integer errors = 0;
     integer checks = 0;
     integer k;
+    integer fd;
 
     task ref_reset;
         begin
@@ -161,6 +174,19 @@ module NuCore_TB;
         end
     endtask
 
+    // End the simulation. Under ModelSim $finish pops up a "finish?" dialog
+    // in GUI mode; $stop leaves the waveform open instead, and in batch
+    // mode returns control to the do script so it can quit.
+    task end_sim;
+        begin
+`ifdef MODEL_TECH
+            $stop;
+`else
+            $finish;
+`endif
+        end
+    endtask
+
     // Hold reset low for a few clocks and release it mid-cycle.
     task apply_reset;
         begin
@@ -198,10 +224,18 @@ module NuCore_TB;
     // Test sequence
     // ------------------------------------------------------------------
     initial begin
-        if ($test$plusargs("vcd")) begin
-            $dumpfile("NuCore_TB.vcd");
-            $dumpvars(0, NuCore_TB);
+        // Fail loudly if the program file is not where we expect it,
+        // otherwise $readmemb only warns and the DUT runs an empty ROM.
+        fd = $fopen(`PROGRAM_FILE, "r");
+        if (fd == 0) begin
+            $display("ERROR: cannot open program file \"%0s\".", `PROGRAM_FILE);
+            $display("       Run the simulator from the project root (sim/modelsim.do, make)");
+            $display("       or from <project>/simulation/modelsim (Quartus NativeLink),");
+            $display("       or compile with +define+PROGRAM_FILE=\"<path>\".");
+            $display("TEST FAILED");
+            end_sim;
         end
+        $fclose(fd);
 
         for (k = 0; k < PROGRAM_DEPTH; k = k + 1)
             program_mem[k] = {INSTR_WIDTH{1'b0}};
@@ -244,14 +278,14 @@ module NuCore_TB;
             $display("TEST PASSED");
         else
             $display("TEST FAILED");
-        $finish;
+        end_sim;
     end
 
     // Watchdog
     initial begin
         #(CLK_PERIOD * 2000);
         $display("TEST FAILED: watchdog timeout");
-        $finish;
+        end_sim;
     end
 
 endmodule

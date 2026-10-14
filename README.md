@@ -6,8 +6,8 @@ program from instruction memory, keeps its operands in two 16-entry register
 files, and shows the operands and the ALU result on the board's seven-segment
 displays.
 
-The instruction set and the original design report are in
-`Instruction_set+Details.pdf`.
+The instruction set and the original design report (RTL view, Quartus
+waveform simulation and board photos) are in `Instruction_set_simulation.pdf`.
 
 ## Layout
 
@@ -27,7 +27,8 @@ The instruction set and the original design report are in
 | `programs/`               | Alternative programs in the same format                         |
 | `sim/Waveform.vwf`        | Quartus vector waveform file from the original project          |
 | `NuCore.qpf`, `NuCore.qsf`| Quartus Prime project and settings (pin assignments included)   |
-| `Makefile`                | Simulation, lint and synthesis-check targets                    |
+| `sim/modelsim.do`         | ModelSim script: compile, load the testbench, add waves, run    |
+| `Makefile`                | ModelSim batch run, lint and synthesis-check targets            |
 
 ## Instruction set
 
@@ -128,26 +129,64 @@ the fitter does not route them to physical pins.
 
 ## Simulation
 
-Requires [Icarus Verilog](https://steveicarus.github.io/iverilog/). Verilator
-and Yosys are optional for `make lint` and `make synth`.
+The self-checking testbench `tb/NuCore_TB.v` runs under ModelSim-Altera, the
+simulator bundled with Quartus Prime Lite.
 
-```sh
-make              # run the self-checking testbench on memory.dat
-make VCD=1        # also write build/NuCore_TB.vcd
-make PROGRAM=programs/memory.txt
-make lint         # Verilator -Wall
-make synth        # Yosys elaboration as a synthesizability check
+### ModelSim-Altera from Quartus
+
+Open `NuCore.qpf` and run *Tools > Run Simulation Tool > RTL Simulation*.
+The project is already set up for NativeLink: the simulation tool is
+ModelSim-Altera (Verilog) and the test bench `NuCore_TB` (file
+`tb/NuCore_TB.v`) is registered under *Assignments > Settings > EDA Tool
+Settings > Simulation*. Quartus compiles the RTL and the testbench, starts
+ModelSim in `simulation/modelsim` and runs until the testbench stops. The
+transcript ends with `TEST PASSED` or `TEST FAILED`, and the waveform stays
+open for inspection.
+
+The testbench reads `memory.dat` through `../../memory.dat` when compiled by
+ModelSim, which is where the project root lies relative to
+`simulation/modelsim`. If you move the simulation directory, compile with
+`+define+PROGRAM_FILE="<path>"` instead.
+
+### ModelSim-Altera standalone
+
+Start ModelSim (or `vsim` from a shell), change to the project root and run
+`sim/modelsim.do`:
+
+```tcl
+cd <project root>
+do sim/modelsim.do                                    ;# GUI, opens the wave window
 ```
 
-The testbench loads the program into its own reference model of the
-instruction set and compares `result`, the zero flag, `Data_A`, `Data_B` and
-all six HEX displays against it after every instruction. It runs the program
-twice (which crosses the RESET restart), then asserts the asynchronous reset in
-the middle of the program and runs it again. It prints `TEST PASSED` or
-`TEST FAILED` and `make` fails on the latter.
+```sh
+vsim -c -do "do sim/modelsim.do; quit -f"             # batch
+vsim -c -do "set PROGRAM programs/memory.txt; do sim/modelsim.do; quit -f"
+make                                                  # same as the batch form
+make PROGRAM=programs/memory.txt
+```
+
+The script compiles everything into a `work` library in the project root,
+loads `NuCore_TB`, adds the board outputs, the core's program counter and the
+reference model's expected values to the wave window, and runs to the end.
+
+`make` needs `vsim` on the PATH (it lives in `modelsim_ase/bin` under the
+Quartus installation) or `VSIM=<path to vsim>`. Verilator and Yosys are
+optional for `make lint` and `make synth`.
+
+### What the testbench checks
+
+The testbench drives `KEY[0]` as a 10 ns clock (as in the design report) and
+`KEY[1]` as the reset. It loads the program into its own reference model of
+the instruction set and compares `result`, the zero flag, `Data_A`, `Data_B`
+and all six HEX displays against it after every instruction. It runs the
+program twice (which crosses the RESET restart), then asserts the
+asynchronous reset in the middle of the program and runs it again. It prints
+`TEST PASSED` or `TEST FAILED`; `make` fails on the latter.
 
 With `memory.dat`, which stores 1..10 into `A[0..9]` and 10..1 into
-`B[0..9]` before adding and AND-ing them pairwise, every ADD produces 11.
+`B[0..9]` (entries 10 and 11 are stored as 0) before adding and AND-ing
+`A[i]` with `B[i]` for `i` = 0..11, every ADD of the first ten pairs produces
+11 and the last two produce 0.
 
 ## Building for the DE1-SoC
 
@@ -157,8 +196,8 @@ the opcode header. The program file is read from the project directory, so
 keep `memory.dat` next to `NuCore.qpf` or change the `PROGRAM_FILE` parameter
 of the top level.
 
-Simulation from Quartus (NativeLink) uses `tb/NuCore_TB.v`; ModelSim must be
-started from the project directory so the testbench can find `memory.dat`.
+Simulation from Quartus (NativeLink) uses `tb/NuCore_TB.v`; see
+[Simulation](#simulation).
 
 ## Program files
 
